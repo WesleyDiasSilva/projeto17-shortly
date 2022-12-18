@@ -7,6 +7,7 @@ export async function serviceFindUser(
 ): Promise<layerResponse> {
   try {
     const userFound = await findUser(data, method);
+
     return { status: true, response: { message: userFound.response.message } };
   } catch (err) {
     return { status: false, response: { message: err } };

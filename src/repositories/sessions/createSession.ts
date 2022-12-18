@@ -1,19 +1,18 @@
 import { connection } from '../../database/connection';
 import { layerResponse } from '../../types/typeServices';
 
-export async function findUser(
-  data: string,
-  column: string
+export async function createSession(
+  token: string,
+  id: number
 ): Promise<layerResponse> {
   try {
-    const userFound = await connection.query(
+    await connection.query(
       `
-    SELECT * FROM users WHERE email = $1
-    `,
-      [data]
+  INSERT INTO sessions (token, user_id) VALUES ($1, $2)
+  `,
+      [token, id]
     );
-
-    return { status: true, response: { message: userFound.rows[0] } };
+    return { status: true, response: { message: null } };
   } catch (err) {
     return { status: false, response: { message: err } };
   }
