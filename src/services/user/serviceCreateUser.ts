@@ -1,7 +1,7 @@
 import { createUser } from '../../repositories/users/createUser';
 import { layerResponse } from '../../types/typeServices';
 import { newUser } from '../../types/users/typeUser';
-import { createHashPassword } from '../../utils/createHashPassword';
+import { createHashPassword } from '../../utils/bcrypt/createHashPassword';
 import { serviceFindUser } from './serviceFindUser';
 
 export async function serviceCreateUser(

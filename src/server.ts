@@ -2,12 +2,14 @@ import chalk from 'chalk';
 import cors from 'cors';
 import express from 'express';
 import authRoutes from './routes/authRoutes';
+import urlsRoutes from './routes/urlsRoutes';
 
 const server = express();
 
 server.use(cors());
 server.use(express.json());
 server.use(authRoutes);
+server.use(urlsRoutes);
 
 const port = process.env.PORT ?? 4000;
 server.listen(port, () =>
