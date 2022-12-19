@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { deleteUrlController } from '../controllers/urls/deleteUrlController';
 import { getUrlByIdController } from '../controllers/urls/getUrlByIdController';
 import { newUrlController } from '../controllers/urls/newUrlController';
 import { openUrlController } from '../controllers/urls/openUrlController';
@@ -11,5 +12,6 @@ route.get('/urls/:id', getUrlByIdController);
 route.get('/urls/open/:shortUrl', openUrlController);
 route.use(middlewareAuth);
 route.post('/urls/shorten', middlewareNewUrl, newUrlController);
+route.delete('/urls/:id', deleteUrlController)
 
 export default route;
