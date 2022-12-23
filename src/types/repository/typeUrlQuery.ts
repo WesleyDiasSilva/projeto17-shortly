@@ -9,6 +9,7 @@ export interface query {
       user_id: number;
       visit_number: number;
       clicks_goal: number;
+      created_at: Date;
     }
   ];
 }

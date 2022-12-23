@@ -2,7 +2,7 @@
   "name": "projeto17-shortly",
   "version": "1.0.0",
   "description": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node ./dist/server.js",
