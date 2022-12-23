@@ -9,6 +9,7 @@ export async function serviceCreateShortUlr(
 ): Promise<serviceMessage> {
   try {
     const nanoId = createNanoId();
+    console.log('nano id ->', nanoId)
     const response = await createShortUrl({
       url,
       user_id: id,
