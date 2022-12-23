@@ -1,17 +1,16 @@
 import { createUser } from '../../repositories/users/createUser';
-import { layerResponse } from '../../types/typeServices';
+import { serviceMessage } from '../../types/service/typeMessage';
 import { newUser } from '../../types/users/typeUser';
 import { createHashPassword } from '../../utils/bcrypt/createHashPassword';
 import { serviceFindUser } from './serviceFindUser';
 
 export async function serviceCreateUser(
   newUser: newUser
-): Promise<layerResponse> {
+): Promise<serviceMessage> {
   try {
     const { name, email, password } = newUser;
     const findUser = await serviceFindUser(email, 'email');
-    console.log(findUser);
-    if (findUser.response.message === undefined) {
+    if (findUser.response.message[0] === undefined) {
       const hash = await createHashPassword(password);
       const response = await createUser({ name, email, password: hash });
       if (response.status) {
@@ -22,7 +21,7 @@ export async function serviceCreateUser(
       status: false,
       response: { message: 'Could not create new user, try again later!' },
     };
-  } catch (err) {
-    return { status: false, response: { message: err } };
+  } catch {
+    return { status: false, response: { message: '' } };
   }
 }

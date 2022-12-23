@@ -4,13 +4,12 @@ import { serviceOpenUrl } from '../../services/urls/serviceOpenUrl';
 export async function openUrlController(
   req: Request,
   res: Response
-): Promise<Response> {
+): Promise<unknown> {
   try {
     const { shortUrl } = req.params;
     const openUrl = await serviceOpenUrl(shortUrl);
-    console.log(openUrl);
     if (openUrl.status) {
-      res.redirect(openUrl.response.message);
+      res.redirect(openUrl.response.message[0].url);
       if (openUrl.response.sendEmail) {
         console.log('Envia o email');
       }

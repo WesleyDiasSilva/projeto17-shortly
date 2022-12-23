@@ -1,10 +1,11 @@
 import { connection } from '../../database/connection';
-import { layerResponse } from '../../types/typeServices';
+import { repositoryNull } from '../../types/repository/typeNull';
+
 import { urlType } from '../../types/urls/typeUrl';
 
 export async function createShortUrl(
   urlObject: urlType
-): Promise<layerResponse> {
+): Promise<repositoryNull> {
   const { url, short_url, user_id, clicks_goal } = urlObject;
   try {
     if (clicks_goal !== undefined) {

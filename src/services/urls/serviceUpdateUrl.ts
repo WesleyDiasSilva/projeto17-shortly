@@ -1,10 +1,10 @@
 import { updateUrl } from '../../repositories/urls/updateUrl';
-import { layerResponse } from '../../types/typeServices';
+import { serviceNull } from '../../types/service/typeNull';
 
 export async function serviceUpdateUrl(
   id: number,
   visit_number: number
-): Promise<layerResponse> {
+): Promise<serviceNull> {
   try {
     const result = await updateUrl(id, visit_number);
     if (result.status) {

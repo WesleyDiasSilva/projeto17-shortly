@@ -1,11 +1,11 @@
 import { findUrlById } from '../../repositories/urls/findUrlById';
 import { findShortUrl } from '../../repositories/urls/findUrlByShortUrl';
-import { layerResponse } from '../../types/typeServices';
+import { serviceQuery } from '../../types/service/typeQuery';
 
 export async function serviceFindUrl(
   params: string | number,
-  method: 'email' | 'short_url' | 'user_id' | 'id'
-): Promise<layerResponse> {
+  method: 'short_url' | 'id'
+): Promise<serviceQuery> {
   try {
     if (method === 'id') {
       const id = Number(params);
@@ -18,7 +18,7 @@ export async function serviceFindUrl(
       }
       return {
         status: false,
-        response: { message: null },
+        response: { message: [{}] },
       };
     }
     if (method === 'short_url') {
@@ -30,10 +30,10 @@ export async function serviceFindUrl(
           response: { message: foundUrl.response.message },
         };
       }
-      return { status: false, response: { message: null } };
+      return { status: false, response: { message: [{}] } };
     }
-    return { status: false, response: { message: null } };
+    return { status: false, response: { message: [{}] } };
   } catch {
-    return { status: false, response: { message: null } };
+    return { status: false, response: { message: [{}] } };
   }
 }

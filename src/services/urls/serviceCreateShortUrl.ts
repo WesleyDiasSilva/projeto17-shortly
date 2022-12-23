@@ -1,12 +1,12 @@
 import { createShortUrl } from '../../repositories/urls/createShortUrl';
-import { layerResponse } from '../../types/typeServices';
+import { serviceMessage } from '../../types/service/typeMessage';
 import { createNanoId } from '../../utils/nanoId/createNanoId';
 
 export async function serviceCreateShortUlr(
   url: string,
   id: number,
   clicks_goal?: number
-): Promise<layerResponse> {
+): Promise<serviceMessage> {
   try {
     const nanoId = createNanoId();
     const response = await createShortUrl({
@@ -18,8 +18,8 @@ export async function serviceCreateShortUlr(
     if (response.status) {
       return { status: true, response: { message: nanoId } };
     }
-    return { status: false, response: { message: null } };
-  } catch (err) {
-    return { status: false, response: { message: err } };
+    return { status: false, response: { message: '' } };
+  } catch {
+    return { status: false, response: { message: '' } };
   }
 }

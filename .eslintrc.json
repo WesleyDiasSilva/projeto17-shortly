@@ -19,7 +19,7 @@
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/comma-dangle": "off",
-    "@typescript-eslint/strict-boolean-expressions": "warn",
+    "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/naming-convention": "off"
   }
 }

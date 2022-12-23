@@ -1,7 +1,9 @@
 import { connection } from '../../database/connection';
-import { layerResponse } from '../../types/typeServices';
+import { repositoryQuery } from '../../types/repository/typeQuery';
 
-export async function findShortUrl(short_url: string): Promise<layerResponse> {
+export async function findShortUrl(
+  short_url: string
+): Promise<repositoryQuery> {
   try {
     const foundUrl = await connection.query(
       `
@@ -11,8 +13,8 @@ export async function findShortUrl(short_url: string): Promise<layerResponse> {
     `,
       [short_url]
     );
-    return { status: true, response: { message: foundUrl.rows[0] } };
+    return { status: true, response: { message: foundUrl.rows } };
   } catch (err) {
-    return { status: false, response: { message: err } };
+    return { status: false, response: { message: [{}] } };
   }
 }

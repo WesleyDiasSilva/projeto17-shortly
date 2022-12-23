@@ -1,10 +1,10 @@
 import { connection } from '../../database/connection';
-import { layerResponse } from '../../types/typeServices';
+import { repositoryNull } from '../../types/repository/typeNull';
 
 export async function createSession(
   token: string,
   id: number
-): Promise<layerResponse> {
+): Promise<repositoryNull> {
   try {
     await connection.query(
       `
@@ -13,7 +13,7 @@ export async function createSession(
       [token, id]
     );
     return { status: true, response: { message: null } };
-  } catch (err) {
-    return { status: false, response: { message: err } };
+  } catch {
+    return { status: false, response: { message: null } };
   }
 }

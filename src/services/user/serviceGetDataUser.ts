@@ -1,14 +1,14 @@
 import { getDataUser } from '../../repositories/users/getDataUser';
-import { layerResponse } from '../../types/typeServices';
+import { serviceQuery } from '../../types/service/typeQuery';
 
-export async function serviceGetDataUser(id: number): Promise<layerResponse> {
+export async function serviceGetDataUser(id: number): Promise<serviceQuery> {
   try {
     const data = await getDataUser(id);
     if (data.status) {
-      return { status: true, response: { message: data.response.message } };
+      return { status: true, response: { message: [data.response.message] } };
     }
-    return { status: false, response: { message: null } };
+    return { status: false, response: { message: [{}] } };
   } catch {
-    return { status: false, response: { message: null } };
+    return { status: false, response: { message: [{}] } };
   }
 }

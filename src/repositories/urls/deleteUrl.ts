@@ -1,7 +1,7 @@
 import { connection } from '../../database/connection';
-import { layerResponse } from '../../types/typeServices';
+import { repositoryNull } from '../../types/repository/typeNull';
 
-export async function deleteUrl(id: number): Promise<layerResponse> {
+export async function deleteUrl(id: number): Promise<repositoryNull> {
   try {
     await connection.query(
       `
@@ -10,7 +10,7 @@ export async function deleteUrl(id: number): Promise<layerResponse> {
       [id]
     );
     return { status: true, response: { message: null } };
-  } catch (err) {
-    return { status: false, response: { message: err } };
+  } catch {
+    return { status: false, response: { message: null } };
   }
 }

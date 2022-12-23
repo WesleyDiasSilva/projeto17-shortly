@@ -1,8 +1,8 @@
 import { connection } from '../../database/connection';
-import { layerResponse } from '../../types/typeServices';
+import { repositoryNull } from '../../types/repository/typeNull';
 import { newUser } from '../../types/users/typeUser';
 
-export async function createUser(user: newUser): Promise<layerResponse> {
+export async function createUser(user: newUser): Promise<repositoryNull> {
   try {
     const { name, email, password } = user;
     await connection.query(
@@ -11,8 +11,8 @@ export async function createUser(user: newUser): Promise<layerResponse> {
     `,
       [name, email, password]
     );
-    return { status: true, response: { message: 'OK' } };
-  } catch (err) {
-    return { status: false, response: { message: err } };
+    return { status: true, response: { message: null } };
+  } catch {
+    return { status: false, response: { message: null } };
   }
 }

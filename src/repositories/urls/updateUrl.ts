@@ -1,10 +1,10 @@
 import { connection } from '../../database/connection';
-import { layerResponse } from '../../types/typeServices';
+import { repositoryNull } from '../../types/repository/typeNull';
 
 export async function updateUrl(
   id: number,
   visit_number: number
-): Promise<layerResponse> {
+): Promise<repositoryNull> {
   try {
     await connection.query(
       `

@@ -1,10 +1,10 @@
 import { connection } from '../../database/connection';
-import { layerResponse } from '../../types/typeServices';
+import { repositoryUserFound } from '../../types/repository/typeUserFound';
 
 export async function findUser(
   data: string,
   column: string
-): Promise<layerResponse> {
+): Promise<repositoryUserFound> {
   try {
     const userFound = await connection.query(
       `
@@ -13,8 +13,8 @@ export async function findUser(
       [data]
     );
 
-    return { status: true, response: { message: userFound.rows[0] } };
-  } catch (err) {
-    return { status: false, response: { message: err } };
+    return { status: true, response: { message: userFound.rows } };
+  } catch {
+    return { status: false, response: { message: [{}] } };
   }
 }

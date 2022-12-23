@@ -1,7 +1,7 @@
 import { connection } from '../../database/connection';
-import { layerResponse } from '../../types/typeServices';
+import { repositoryQuery } from '../../types/repository/typeQuery';
 
-export async function findSession(id: number): Promise<layerResponse> {
+export async function findSession(id: number): Promise<repositoryQuery> {
   try {
     const session = await connection.query(
       `
@@ -9,8 +9,8 @@ export async function findSession(id: number): Promise<layerResponse> {
     `,
       [id]
     );
-    return { status: true, response: { message: session.rows[0] } };
+    return { status: true, response: { message: session.rows } };
   } catch {
-    return { status: false, response: { message: null } };
+    return { status: false, response: { message: [{}] } };
   }
 }

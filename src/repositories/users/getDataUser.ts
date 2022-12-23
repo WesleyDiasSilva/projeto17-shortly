@@ -1,7 +1,7 @@
 import { connection } from '../../database/connection';
-import { layerResponse } from '../../types/typeServices';
+import { repositoryDoubleQuery } from '../../types/repository/typeDoubleQuery';
 
-export async function getDataUser(id: number): Promise<layerResponse> {
+export async function getDataUser(id: number): Promise<repositoryDoubleQuery> {
   try {
     const data = await connection.query(
       `
@@ -21,10 +21,16 @@ export async function getDataUser(id: number): Promise<layerResponse> {
 
     return {
       status: true,
-      response: { message: { data: data.rows[0], shortenedUrls: shorteneds.rows } },
+      response: {
+        message: { userInfo: data.rows, shortenedUrls: shorteneds.rows },
+      },
     };
   } catch (err) {
-    console.log(err);
-    return { status: false, response: { message: null } };
+    return {
+      status: false,
+      response: {
+        message: { userInfo: [{}], shortenedUrls: [{}] },
+      },
+    };
   }
 }
