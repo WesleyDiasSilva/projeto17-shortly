@@ -7,7 +7,7 @@ export async function getUrlByIdController(
 ): Promise<Response> {
   try {
     const { id } = req.params;
-    const foundUrl = await serviceFindUrl(id, 'id');
+    const foundUrl: any = await serviceFindUrl(id, 'id');
 
     if (!foundUrl.status) {
       return res.status(404).send('url not found!');

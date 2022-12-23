@@ -13,7 +13,7 @@ export async function findUser(
       [data]
     );
 
-    return { status: true, response: { message: userFound.rows } };
+    return { status: true, response: { message: userFound.rows as any } };
   } catch {
     return { status: false, response: { message: [{}] } };
   }

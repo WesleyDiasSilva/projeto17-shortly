@@ -9,7 +9,7 @@ export async function serviceFindUrl(
   try {
     if (method === 'id') {
       const id = Number(params);
-      const foundUrl = await findUrlById(id);
+      const foundUrl: any = await findUrlById(id);
       if (foundUrl.status) {
         return {
           status: true,

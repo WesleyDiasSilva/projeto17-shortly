@@ -9,7 +9,7 @@ export async function serviceLogin(
   passwordCompare: string
 ): Promise<serviceMessage> {
   try {
-    const foundUser = await serviceFindUser(email, 'email');
+    const foundUser: any = await serviceFindUser(email, 'email');
 
     if (foundUser.response.message[0] !== undefined) {
       const { id, name, password } = foundUser.response.message[0];

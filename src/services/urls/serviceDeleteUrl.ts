@@ -7,7 +7,7 @@ export async function serviceDeleteUrl(
   user_id: number
 ): Promise<serviceMessage> {
   try {
-    const foundUrl = await findUrlById(url_id);
+    const foundUrl: any = await findUrlById(url_id);
     if (!foundUrl.response.message) {
       return { status: false, response: { message: 'url not found' } };
     }

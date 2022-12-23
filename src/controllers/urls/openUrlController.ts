@@ -7,7 +7,7 @@ export async function openUrlController(
 ): Promise<unknown> {
   try {
     const { shortUrl } = req.params;
-    const openUrl = await serviceOpenUrl(shortUrl);
+    const openUrl: any = await serviceOpenUrl(shortUrl);
     if (openUrl.status) {
       res.redirect(openUrl.response.message[0].url);
       if (openUrl.response.sendEmail) {

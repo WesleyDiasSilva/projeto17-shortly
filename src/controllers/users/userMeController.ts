@@ -7,7 +7,7 @@ export async function userMeController(
 ): Promise<Response> {
   try {
     const { user } = req.body;
-    const dataOfUser = await serviceGetDataUser(user.id);
+    const dataOfUser: any = await serviceGetDataUser(user.id);
     const response = {
       id: dataOfUser.response.message[0].userInfo[0].id,
       name: dataOfUser.response.message[0].userInfo[0].name,

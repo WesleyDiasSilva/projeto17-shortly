@@ -6,7 +6,7 @@ export async function serviceOpenUrl(
   short_url: string
 ): Promise<serviceQueryAndSendEmail> {
   try {
-    const foundUrl = await serviceFindUrl(short_url, 'short_url');
+    const foundUrl: any = await serviceFindUrl(short_url, 'short_url');
     if (foundUrl.status) {
       const { id, visit_number, clicks_goal, email, name, url } =
         foundUrl.response.message[0];
