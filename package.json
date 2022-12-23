@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node ./dist/server.js",
-    "build": "npx tsc",
+    "build": "npm install && npx tsc --moduleResolution node",
     "dev": "npx tsx watch src/server.ts"
   },
   "repository": {
