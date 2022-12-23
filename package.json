@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "server.ts",
+  "main": "server.js",
   "scripts": {
-    "build": "tsc",
+    "start": "node dist/server.js",
+    "build": "npx tsc",
     "dev": "npx tsx watch src/server.ts"
   },
   "repository": {
